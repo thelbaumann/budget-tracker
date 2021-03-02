@@ -1,10 +1,10 @@
 let db;
 
-const request = indexedDB.open("budgeting", 1);
+const request = indexedDB.open("budget", 1);
 
 request.onupgradeneeded = function (event) {
     const db = event.target.result;
-    db.createObjectStore("purchases", { autoIncrement: true });
+    db.createObjectStore("activity", { autoIncrement: true });
 };
 
 request.onsuccess = function (event) {
@@ -20,17 +20,17 @@ request.onerror = function (event) {
 };
 
 function saveRecord(record) {
-    const transaction = db.transaction("purchases", "readwrite");
+    const transaction = db.transaction("activity", "readwrite");
 
-    const store = transaction.objectStore("purchases");
+    const store = transaction.objectStore("activity");
 
     store.add(record);
 }
 
 function checkDatabase() {
-    const transaction = db.transaction("purchases", "readwrite");
+    const transaction = db.transaction("activity", "readwrite");
 
-    const store = transaction.objectStore("purchases");
+    const store = transaction.objectStore("activity");
 
     const getAll = store.getAll();
 
@@ -46,15 +46,14 @@ function checkDatabase() {
             })
                 .then((response) => response.json())
                 .then(() => {
-                    const transaction = db.transaction("purchases", "readwrite");
+                    const transaction = db.transaction("activity", "readwrite");
 
-                    const store = transaction.objectStore("purchases");
+                    const store = transaction.objectStore("activity");
 
                     store.clear();
                 });
         }
     };
 }
-
 
 window.addEventListener('online', checkDatabase);

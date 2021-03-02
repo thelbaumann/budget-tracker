@@ -1,6 +1,6 @@
 {
-  "name": "Finance App",
-  "short_name": "Finance App",
+  "name": "Budget App PWA",
+  "short_name": "Budget App",
   "icons": [
     {
       "src": "./icons/icon-192x192.png",
