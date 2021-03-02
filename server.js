@@ -2,7 +2,6 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
-require('dotenv').config()
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,11 +15,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-
-let uri = "mongodb+srv://thelbaum:SftzowOLfTgQrBgF@cluster0.opurh.mongodb.net/budget?retryWrites=true&w=majority";
-
 mongoose.connect(
-  uri || 'mongodb://localhost/budget',
+  process.env.MONGODB_URI || 'mongodb://localhost/budget',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
