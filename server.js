@@ -15,15 +15,27 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/budget',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  }
-);
+// let uri = "mongodb+srv://thelbaum:SftzowOLfTgQrBgF@cluster0.opurh.mongodb.net/budget?retryWrites=true&w=majority";
+
+// mongoose.connect(
+//   process.env.MONGODB_URI || 'mongodb://localhost/budget',
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+//   }).then(() => console.log( 'Database Connected' ))
+//   .catch(err => console.log( err ));
+
+  mongoose.connect(
+    process.env.MONGODB_URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }).then(() => console.log( 'Database Connected' ))
+    .catch(err => console.log( err ));
 
 // routes
 app.use(require("./routes/api.js"));
