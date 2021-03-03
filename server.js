@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// let uri = "mongodb+srv://thelbaum:SftzowOLfTgQrBgF@cluster0.opurh.mongodb.net/budget?retryWrites=true&w=majority";
+// let uri = "xxx"
 
 // mongoose.connect(
 //   process.env.MONGODB_URI || 'mongodb://localhost/budget',
