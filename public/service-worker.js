@@ -15,7 +15,7 @@ const DATA_CACHE_NAME = "data-cache-v1";
 self.addEventListener("install", function(evt) {
   evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      console.log("Your files were pre-cached successfully!");
+      console.log("Files have been pre-cached.");
       return cache.addAll(FILES_TO_CACHE);
     })
   );
@@ -29,7 +29,7 @@ self.addEventListener("activate", function(evt) {
       return Promise.all(
         keyList.map(key => {
           if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
-            console.log("Removing old cache data", key);
+            console.log("Removing outdated cache data", key);
             return caches.delete(key);
           }
         })

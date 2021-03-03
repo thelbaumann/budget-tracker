@@ -16,7 +16,7 @@ request.onsuccess = function (event) {
 };
 
 request.onerror = function (event) {
-    console.log("Oh no!" + event.target.errorCode);
+    console.log("Found error: " + event.target.errorCode);
 };
 
 function saveRecord(record) {
